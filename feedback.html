@@ -1,0 +1,243 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>家庭记录反馈表</title>
+	<link rel="icon" type="image/x-icon" href="favicon.ico"/>
+	<meta name="viewport" content="width=divice-width, initial-scale=1.0">
+	<meta charset="UTF-8">
+	<style type="text/css">
+		body{
+			/*background-image: url(../img/bear.jpg);
+			background-repeat: repeat-y;
+			background-size: 100%;*/
+			background: #FEF9E7;
+			font-size: 18px;
+			color: #566573;
+		}
+		.fieldset_box{
+			background: #EAEDED;
+			border-style: none; /*不要边框*/
+			border-radius: 10px;
+			margin-bottom: 12px;
+			overflow: hidden;
+			padding: 0.625em;
+			box-shadow: 5px 5px 6px #808B96; /*设置阴影*/
+		}
+		legend{
+			background: #A93226;
+			margin-left: 10px;
+			font-family: 黑体;
+			font-size: 20px;
+			color: #F7F9F9;
+			box-shadow: 3px 3px 6px #ABB2B9; 
+		}
+		.button{
+			text-align: center;
+		}
+		button{
+			background:#F4F6F6;
+			font-size:18px;
+			height:40px;
+			width:80px;
+			border-radius:5px;
+			margin-bottom:3cm;
+			box-shadow: 5px 5px 6px #808B96;
+			color: #566573;"
+		}
+		label{
+            cursor: pointer;
+            display: inline-block;
+            padding: 1px 1px;
+            text-align: right;
+            width: 90px;
+            vertical-align: top;
+        }
+        input{
+			font-size: inherit;
+			border-radius: 5px;
+		}
+		p{
+			margin-bottom: 4px;
+			margin-top: 4px;
+		}
+		.meal_1{
+			background: #FDEDEC;
+			border-style: none; /*不要边框*/
+			border-radius: 5px;
+			margin-bottom: 12px;
+			overflow: hidden;
+			padding: 0.625em;
+			box-shadow: 2px 2px 2px #AEB6BF; /*设置阴影*/
+		}
+		.meal_2{
+			background: #FBFCFC;
+			border-style: none; /*不要边框*/
+			border-radius: 5px;
+			margin-bottom: 12px;
+			overflow: hidden;
+			padding: 0.625em;
+			box-shadow: 2px 2px 2px #AEB6BF; /*设置阴影*/
+		}
+		.radio,.checkbox {
+            width: 1.2rem;
+            height: 1.2rem;
+            background-color: #ffffff;
+            border: solid 1px #dddddd;
+            -webkit-border-radius: 0.6rem;
+            border-radius: 0.6rem;
+            font-size: 0.8rem;
+            margin: 0;
+            padding: 0;
+            position: relative;
+            display: inline-block;
+            vertical-align: top;
+            cursor: default;
+            -webkit-appearance: none;  /**隐藏原生控件**/
+        }
+                
+        .checkbox {
+            border-radius: 0.1rem;   /**复选框的圆角要小一些**/
+        }
+        /**选择后的样式**/
+        .radio:checked,.checkbox:checked{
+            background-color: #E74C3C;
+            border: solid 1px #A93226;
+            box-shadow: 0 1px 1px rgba(0,0,0,.1);
+            text-align: center;
+            background-clip: padding-box;
+        }
+         /**选择后 里面小对勾样式**/
+        .radio:checked:before,.checkbox:checked:before{
+            content: '';
+            width: 0.5rem;
+            height: 0.3rem;
+            border: 1px solid #ffffff;
+            border-top: none;
+            border-right: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-left: -0.25rem;
+            margin-top: -0.25rem;
+            -webkit-transform: rotate(-45deg);
+                    transform: rotate(-45deg);
+        }
+        .textarea1{
+        	width:60%;
+        	border-radius: 5px;
+        	border-color:#566573;
+        	font-size: 18px;
+        }
+	</style>
+</head>
+<body>
+	<form name="feedback" method="post" action="check.php">
+		日期: <input type="date" name="date" required="required"><br><br>
+		<!-- 健康状况区域 -->
+		<fieldset class="fieldset_box" a="center">
+			<legend>健康详情</legend>
+			<p>
+				<label>排便情况：</label>
+				<input class="radio" type="radio" name="bubu" value="硬便">硬便 
+				<input class="radio" type="radio" name="bubu" value="软便">软便<br>
+				<label></label>
+				<input class="radio" type="radio" name="bubu" value="水样便">水样便 
+				<input class="radio" type="radio" name="bubu" value="普通" checked>普通
+				<input class="radio" type="radio" name="bubu" value="腹泻">腹泻 
+			</p>
+			<p>
+				<label>体温测量： </label>
+				<input type="text" name="temperature" style="width:50px;height:25px;">&nbsp;&#8451;
+			</p>
+			<p>
+				<label>健康状况：</label>
+				<input class="radio" type="radio" name="health" value="非常好">非常好<br>
+				<label></label>
+				<input class="radio" type="radio" name="health" value="良好" checked>良好<br>
+				<label></label>
+				<span>
+				<input class="radio" type="radio" name="health" value="一般">一般 </span>
+				<input type="text" name="detail_1" style="width:40%;height:25px;margin-bottom:5px;"><br>
+				<label></label>
+				<input class="radio" type="radio" name="health" value="不好" >不好 
+				<input type="text" name="detail_2" style="width:40%;height:25px;">
+			</p>
+			<p>
+				<label>吃过药：</label>
+				<input class="radio" type="radio" name="medicine" value="无" checked>无<br>
+				<label></label>
+				<input class="radio" type="radio" name="medicine" value="有">有
+				<input type="time" name='time' id="123">
+			</p>
+		</fieldset><br>
+
+		<!-- 用餐情况区域 -->
+		<fieldset class="fieldset_box">
+			<legend>用餐详情</legend>
+			<fieldset class="meal_1">
+			<p>
+            	<label for="breakfast" >早餐：</label>
+            	<textarea class="textarea1" rows="4" id="breakfast" name="breakfast"></textarea>
+       		</p>
+			<p>
+				<label>食量：</label>
+				<input class="radio" type="radio" name="quantity1" value="多">多 
+				<input class="radio" type="radio" name="quantity1" value="普通">普通 
+				<input class="radio" type="radio" name="quantity1" value="少">少
+			</p>
+			</fieldset>
+
+			<fieldset class="meal_2">
+			<p>
+            	<label for="lunch" >午餐：</label>
+            	<textarea class="textarea1" rows="4" id="lunch" name="lunch"></textarea>
+       		</p>
+			<p>
+				<label>食量：</label>
+				<input class="radio" type="radio" name="quantity2" value="多">多 
+				<input class="radio" type="radio" name="quantity2" value="普通">普通 
+				<input class="radio" type="radio" name="quantity2" value="少">少
+			</p>
+			</fieldset>
+			
+			<fieldset class="meal_1">
+			<p>
+            	<label for="tea" >下午茶：</label>
+            	<textarea class="textarea1" rows="4" id="tea" name="tea"></textarea>
+       		</p>
+			<p>
+				<label>食量：</label>
+				<input class="radio" type="radio" name="quantity3" value="多">多 
+				<input class="radio" type="radio" name="quantity3" value="普通">普通 
+				<input class="radio" type="radio" name="quantity3" value="少">少
+			</p>
+			</fieldset>
+			
+			<fieldset class="meal_2">	
+			<p>
+            	<label for="dinner" >晚餐：</label>
+            	<textarea class="textarea1" rows="4" id="dinner" name="dinner"></textarea>
+       		</p>
+			<p>
+				<label>食量：</label>
+				<input class="radio" type="radio" name="quantity4" value="多">多 
+				<input class="radio" type="radio" name="quantity4" value="普通">普通 
+				<input class="radio" type="radio" name="quantity4" value="少">少
+			</p>
+			</fieldset>
+		</fieldset><br>
+
+		<!-- 在家表现情况 -->
+		<fieldset class="fieldset_box">
+			<legend>在家表现情况</legend>
+			<br>
+			<textarea rows="8" style="width:90%;margin-left:15px;font-size:18px;border-radius:5px;" name="content" required="required"></textarea>
+			<br><br>
+		</fieldset><br>
+		<div class="button">
+			<button type="submit" name="button">提交</button>
+		</div>
+	</form>
+
+</body>
+</html>
